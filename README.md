@@ -155,7 +155,16 @@ The *GitHub flow* is a popular workflow for numerous collaborators working on a 
 
    - Let's try it [here](https://github.com/yuyuranium/fpga-hw0/pull/8). (Review and approve `yuyuranium`'s PR)
 
-6. **Follow up the main branch**
+6. **Delete your branch (optional)**
+
+   After the branch is merged into `main`, our work have been successfully included in the `main` branch. We can now safely delete the branch by clicking **Delete branch**, which indicates that the work on the branch is complete and prevents you or others from accidentally reusing old branches.
+
+   ![](https://imgur.com/j36nn6O.png)
+
+   - We should not use the merged branch again, unless we just want to do a hot-fix (small changes that are in a hurry).
+   - If we continue work on other things (like adding another module, fixing some bugs), **create a new branch** instead.
+
+7. **Follow up the main branch**
 
    When someone's PR is merged into main, we could follow up the update by
 
