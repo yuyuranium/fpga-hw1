@@ -117,43 +117,51 @@ The *GitHub flow* is a popular workflow for numerous collaborators working on a 
 
 4. **Create a *pull request (PR)***
 
-   Once we pushed our commits to GitHub, we can see the button like this:
+   - Once we pushed our commits to GitHub, we can see the button like this
 
-   ![](https://imgur.com/64e3ZVg.png)
+     ![](https://imgur.com/64e3ZVg.png)
 
-   Press **Compare & pull request**.
+   - Press **Compare & pull request**.
 
-   ![](https://imgur.com/ofzZDBi.png)
+     ![](https://imgur.com/ofzZDBi.png)
 
-   Here we can simply summarize what we have done by leaving a comment. Make sure to **request others to be the reviewers** so that everyone can review our work. After that, press **Create pull request**.
+   - Here we can simply summarize what we have done by leaving a comment.
 
-   ![](https://imgur.com/aZrbsiJ.png)
+   - Make sure to **request others to be the reviewers** so that everyone can review our work.
 
-   Then the **pull request** would look like the figure above. If we are reviewers (we should receive an email from GitHub asking us to review the PR), click **Files changed** to see what contents were changed in this PR.
+   - After that, press **Create pull request**.
 
-   ![](https://imgur.com/2gYT3Jd.png)
+     ![](https://imgur.com/aZrbsiJ.png)
 
-   We can even add comment to a single line of code by clicking blue `+` button beside the line number.
+   - Then the **pull request** would look like the figure above.
 
-   ![](https://imgur.com/1YfDrXm.png) 
+   - If we are reviewers (we should receive an email from GitHub asking us to review the PR), click **Files changed** to see what contents were changed in this PR.
+
+     ![](https://imgur.com/2gYT3Jd.png)
+
+   - We can even add comment to a single line of code by clicking blue `+` button beside the line number.
+
+     ![](https://imgur.com/1YfDrXm.png) 
+
+   - We should think of GitHub as a **social media** platform where we can collaborate together, leave comments, ask for help, and communicate with one another.
 
 5. **Merge your *pull request***
 
    - **We should wait until everyone reviews and approves our PR. (i.e., no *pending reviewers*)**
 
-   - We can merge it ourselves when *all reviewers approve the PR* or the *last reviewer* can directly approve and help the author merge the PR.
+   - We can merge it ourselves when *all reviewers have approved the PR* or the *last reviewer* can directly approve and help the author merge the PR.
 
      ![](https://imgur.com/NKe9JUi.png)
 
-   - Let's try it [here](https://github.com/yuyuranium/fpga-hw0/pull/8).
+   - Let's try it [here](https://github.com/yuyuranium/fpga-hw0/pull/8). (Review and approve `yuyuranium`'s PR)
 
 6. **Follow up the main branch**
 
    When someone's PR is merged into main, we could follow up the update by
 
    ```shell
-   git checkout main  # Go back to the main branch
-   git pull origin main
+   git checkout main     # Go back to the main branch
+   git pull origin main  # Pull the latest commits on the main branch of the remote repo
    ```
 
    If you are working on another branch and you also want to pull the update to your branch.
@@ -162,17 +170,29 @@ The *GitHub flow* is a popular workflow for numerous collaborators working on a 
 
    - **Don't merge main in your branch**.
 
-   - Do this instead.
+   - Do this instead
 
      ```bash
      # On your own branch
      git pull origin main --rebase
-     git push origin <your_branch_name> -f
+     git push origin <your_branch_name> -f  # Force update the branch on the remote repo
      ```
 
-     - `--rebase` will change the root of your branch directly to the latest commit of the main branch.
+     - `--rebase` will change the root of your branch(i.e., base) directly to the latest commit of the main branch.
 
      - `-f` will **force** push your local branch and **overwrite** the remote branch.
-       - **This command is dangerous and don't ever try it on the branch that is not yours.**
+       - **This command is dangerous so don't ever try it on the branch that is not yours.**
 
-     
+   - An example to visualize
+
+     Imagine that we are currently working on the branch `wip`, and the `master`(or say, `main`) has 2 new updates(commit `4ad1503` and `0c20d57`) that were not included in our branch. After the `--rebase` operation, our branch `wip` will directly grow on the head of `master` branch as follow. Now those 2 new commits are included in our branch.
+
+     - Before
+
+       ![](https://imgur.com/VH6HcwR.png)
+
+     - After
+
+       ![](https://imgur.com/xK6KbYW.png)
+
+       
