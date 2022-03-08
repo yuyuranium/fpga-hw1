@@ -183,7 +183,12 @@ The *GitHub flow* is a popular workflow for numerous collaborators working on a 
 
      ```bash
      # On your own branch
-     git pull origin main --rebase
+     git pull origin main --rebase  # Pull the update on origin main to your own branch and rebase
+     
+     # Or if your local main has the latest update already, simply do
+     git rebase main
+     
+     # Finally update the remote repo
      git push origin <your_branch_name> -f  # Force update the branch on the remote repo
      ```
 
