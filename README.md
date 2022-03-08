@@ -117,6 +117,8 @@ The *GitHub flow* is a popular workflow for numerous collaborators working on a 
 
 4. **Create a *pull request (PR)***
 
+   - **Pull request** is to ask other collaborators checkout our work, give us some feedbacks and finally include our work into `main`.
+
    - Once we pushed our commits to GitHub, we can see the button like this
 
      ![](https://imgur.com/64e3ZVg.png)
