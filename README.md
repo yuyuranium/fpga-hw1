@@ -195,4 +195,4 @@ The *GitHub flow* is a popular workflow for numerous collaborators working on a 
 
        ![](https://imgur.com/xK6KbYW.png)
 
-       
+​		For further details, please reference [here](https://docs.github.com/en/get-started/quickstart/github-flow).
