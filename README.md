@@ -63,29 +63,29 @@ The *GitHub flow* is a popular workflow for numerous collaborators working on a 
      Let's follow the format
 
      ```
-     <author>-<branch_type>-<branch_name>
+     <author>/<branch-type>/<branch-name>
      ```
 
      - `<author>` is just our id, like `yuyuranium`.
 
-     - `<branch_type>` can be one of the following:
+     - `<branch-type>` can be one of the following:
 
        - `wip`, work in progress, meaning that the work is in progress, and I am aware *it will not finish soon*.
        - `bug`, the bug which needs to be fixed soon.
        - `feat`, feature, meaning that some features are added to our work.
 
-     - `<branch_name>` should simply summarize what we are going to do.
+     - `<branch-name>` should simply summarize what we are going to do.
 
        For example, in the last homework, `yuyuranium` was working on the top module, so he could name his branch like
 
        ```
-       yuyuranium-wip-add_top_module
+       yuyuranium/wip/add-top-module
        ```
 
        or say `WillyChennnn` fixed the [issue #4](https://github.com/yuyuranium/fpga-hw0/issues/4) for the `busy` signal
 
        ```
-       WillyChennnn-bug-fix_busy_signal#4
+       WillyChennnn/bug/fix-busy-signal#4
        ```
 
        Note that we can use `#4` to indicate that this branch is to fix the [issue #4](https://github.com/yuyuranium/fpga-hw0/issues/4).
