@@ -1,4 +1,4 @@
-/* filename def.v
+/* def.v
  * Define the bit pattern for each color of RGB leds.
  */
 `ifndef _DEF_V

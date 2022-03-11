@@ -1,4 +1,4 @@
-/* filename: tb.v
+/* tb.v
  * This is the testbench module to test the decoder for Problem 1.
  */
 

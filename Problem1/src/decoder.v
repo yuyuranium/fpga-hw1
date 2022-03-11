@@ -1,4 +1,4 @@
-/* filename: decoder.v
+/* decoder.v
  * The decoder for Problem 1. The spec:
  * | sw | color  |
  * |----|--------|
