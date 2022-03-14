@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 `include "debouncer.v"
 
 module debouncer_tb;
@@ -21,21 +22,22 @@ module debouncer_tb;
     #15;
     rst_n = 1;
     #17;
-    btn = #30 ~btn;
-    btn = #30 ~btn;
-    btn = #30 ~btn;
-    btn = #30 ~btn;
-    btn = #30 ~btn;
-    btn = #30 ~btn;
-    btn = #30 ~btn;
-    btn = #30 ~btn;
+    btn = #32 ~btn;
+    btn = #20 ~btn;
+    btn = #29 ~btn;
+    btn = #20 ~btn;
+    btn = #29 ~btn;
+    btn = #10 ~btn;
+    btn = #34 ~btn;
+    btn = #10 ~btn;
+    btn = #10 ~btn;
     btn = 1;
-    #50;
+    #200;
     $finish;
   end
 
   always begin
-    clk = #5 ~clk;
+    clk = #4 ~clk;
   end
 
   initial begin
