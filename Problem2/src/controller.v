@@ -125,7 +125,7 @@ always@(*)begin
           end
         end
         default:begin
-          n_state = T1G_T2_R;
+          n_state = T1G_T2R;
         end
       endcase
     end
