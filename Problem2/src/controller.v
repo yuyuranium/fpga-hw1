@@ -21,6 +21,7 @@ parameter IDLE = 3'd0,
           
 wire div_clk;
 wire [2:0] debouncer_BTN;
+wire zero;
 reg [3:0] changed_light, new_light;
 reg [2:0] state, n_state;
 reg [3:0] sec_cnt, n_sec_cnt;
@@ -32,6 +33,9 @@ divider divider(.clk_i(clk), .rst_ni(rst), .clk_div_o(div_clk));
 debouncer debouncer0 (.clk_i(clk),.rst_ni(rst),.btn_i(BTN[0]),.debounced_o(debouncer_BTN[0]));
 debouncer debouncer1 (.clk_i(clk),.rst_ni(rst),.btn_i(BTN[1]),.debounced_o(debouncer_BTN[1]));
 debouncer debouncer2 (.clk_i(clk),.rst_ni(rst),.btn_i(BTN[2]),.debounced_o(debouncer_BTN[2]));
+
+assign zero = ~|sec_cnt;
+
 
 /* traffic light counter */
 always@(posedge div_clk or negedge rst)begin
@@ -79,42 +83,42 @@ always@(*)begin
       case(state)
         IDLE: n_state = T1G_T2R;
         T1G_T2R: begin
-          if( ~|sec_cnt )begin
+          if(zero)begin
             n_state = T1Y_T2R;
           end else begin
             n_state = state;
           end
         end
         T1Y_T2R: begin
-          if( ~|sec_cnt )begin
+          if(zero)begin
             n_state = T1R_T2R;
           end else begin
             n_state = state;
           end
         end
         T1R_T2R: begin
-          if( ~|sec_cnt )begin
+          if(zero)begin
             n_state = T2G_T1R;
           end else begin
             n_state = state;
           end
         end
         T2G_T1R: begin
-          if( ~|sec_cnt )begin
+          if(zero)begin
             n_state = T2Y_T1R;
           end else begin
             n_state = state;
           end
         end
         T2Y_T1R: begin
-          if( ~|sec_cnt )begin
+          if(zero)begin
             n_state = T2R_T1R;
           end else begin
             n_state = state;
           end
         end
         T2R_T1R: begin
-          if( ~|sec_cnt )begin
+          if(zero)begin
             n_state = T1G_T2R;
           end else begin
             n_state = state;
