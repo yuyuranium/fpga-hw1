@@ -172,14 +172,14 @@ always@(*)begin
   if(debouncer_BTN[1])begin // sec +1
     if(&changed_light)begin
       new_light = changed_light;
-    else begin
+    end else begin
       new_light = changed_light + 4'd1;
     end
   end  
   else if(debouncer_BTN[2])begin //sec -1
     if(~|changed_light)begin
       new_light = changed_light;
-    else begin
+    end else begin
       new_light = changed_light - 4'd1;
     end
   end  
