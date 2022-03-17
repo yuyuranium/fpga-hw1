@@ -1,14 +1,14 @@
 module debouncer (
   input      clk_i,
-  input      rst_ni,
+  input      rst_i,
   input      btn_i,
   output reg debounced_o
 );
 
   reg [23:0] cnt;
 
-  always @(posedge clk_i or negedge rst_ni) begin
-    if (!rst_ni) begin
+  always @(posedge clk_i or posedge rst_i) begin
+    if (rst_i) begin
       debounced_o <= btn_i;
       cnt         <= 24'hffffff;
     end else begin
