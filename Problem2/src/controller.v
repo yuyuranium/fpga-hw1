@@ -35,7 +35,7 @@ reg [3:0] rg_length, n_rg_length;
 reg [3:0] yellow_length, n_yellow_length;
 reg [3:0] rr_length, n_rr_length;
 
-divider divider(.clk_i(clk), .rst_ni(rst), .clk_div_o(div_clk));
+divider divider(.clk_i(clk), .rst_i(rst), .clk_div_o(div_clk));
 debouncer debouncer0 (.clk_i(clk),.rst_i(rst),.btn_i(BTN[0]),.debounced_o(debouncer_BTN[0]));
 debouncer debouncer1 (.clk_i(clk),.rst_i(rst),.btn_i(BTN[1]),.debounced_o(debouncer_BTN[1]));
 debouncer debouncer2 (.clk_i(clk),.rst_i(rst),.btn_i(BTN[2]),.debounced_o(debouncer_BTN[2]));
