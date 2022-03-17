@@ -18,6 +18,12 @@ parameter IDLE = 3'd0,
           T2Y_T1R = 3'd5,
           T2R_T1R = 3'd6,
           CHANGE_SEC = 3'd7;
+
+parameter RED  = 3'b100,
+          GREEN = 3'b010,
+          BLUE = 3'b001,
+          YELLOW = 3'b110,
+          WHITE = 3'b111;
           
 wire div_clk;
 wire [2:0] debouncer_BTN;
@@ -38,9 +44,9 @@ assign zero = ~|sec_cnt;
 
 
 /* traffic light counter */
-always@(posedge div_clk or negedge rst)begin
-  if(!rst)begin
-    sec_cnt <= 4'd0;
+always@(posedge div_clk or posedge rst)begin
+  if(rst)begin
+    sec_cnt <= 4'd5;
   end
   else begin
     sec_cnt <= n_sec_cnt;
@@ -69,8 +75,8 @@ always@(*)begin
 end
 
 /* FSM */
-always@(posedge clk or negedge rst)begin
-  if(!rst)begin
+always@(posedge clk or posedge rst)begin
+  if(rst)begin
     state <= IDLE;
   end
   else begin
@@ -134,8 +140,8 @@ always@(*)begin
 end
 
 /* set light count */
-always@(posedge clk or negedge rst)begin
-  if(!rst)begin
+always@(posedge clk or posedge rst)begin
+  if(rst)begin
     rg_length <= 4'd5;
     yellow_length <= 4'd1;
     rr_length <= 4'd1;
@@ -202,50 +208,50 @@ always@(*)begin
     2'b00:begin
       case(state)
         T1G_T2R:begin
-          led4 = 3'b010;
-          led5 = 3'b100;
+          led4 = GREEN;
+          led5 = RED;
         end
         T1Y_T2R:begin
-          led4 = 3'b011;
-          led5 = 3'b100;
+          led4 = YELLOW;
+          led5 = RED;
         end
         T1R_T2R:begin
-          led4 = 3'b100;
-          led5 = 3'b100;
+          led4 = RED;
+          led5 = RED;
         end
         T2G_T1R:begin
-          led4 = 3'b100;
-          led5 = 3'b010;
+          led4 = RED;
+          led5 = GREEN;
         end
         T2Y_T1R:begin
-          led4 = 3'b100;
-          led5 = 3'b011;
+          led4 = RED;
+          led5 = YELLOW;
         end
         T2R_T1R:begin
-          led4 = 3'b100;
-          led5 = 3'b100;
+          led4 = RED;
+          led5 = RED;
         end
         default:begin
-          led4 = 3'b001;
-          led5 = 3'b001;
+          led4 = BLUE;
+          led5 = BLUE;
         end
       endcase
     end
     2'b01:begin
-      led4 = 3'b100; //R
-      led5 = 3'b010; //G
+      led4 = RED; //R
+      led5 = GREEN; //G
     end
     2'b10:begin
-      led4 = 3'b011; // Y
-      led5 = 3'b011; // Y
+      led4 = YELLOW; // Y
+      led5 = YELLOW; // Y
     end
     2'b11:begin
-      led4 = 3'b000; // White
-      led5 = 3'b000; // White
+      led4 = WHITE; // White
+      led5 = WHITE; // White
     end
     default:begin
-      led4 = 3'b001;
-      led5 = 3'b001;
+      led4 = BLUE;
+      led5 = BLUE;
     end
   endcase
 end
