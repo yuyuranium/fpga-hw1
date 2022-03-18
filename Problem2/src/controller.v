@@ -75,7 +75,7 @@ always@(*)begin
 end
 
 /* FSM */
-always@(posedge clk or posedge rst)begin
+always@(posedge div_clk or posedge rst)begin
   if(rst)begin
     state <= IDLE;
   end
