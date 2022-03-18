@@ -4,23 +4,23 @@
 module debouncer_tb;
 
   reg clk;
-  reg rst_n;
+  reg rst;
   reg btn;
   wire debounced;
 
   debouncer u_debouncer(
     .clk_i      (clk),
-    .rst_ni     (rst_n),
+    .rst_i      (rst),
     .btn_i      (btn),
     .debounced_o(debounced)
   );
 
   initial begin
     clk = 0;
-    rst_n = 0;
+    rst = 1;
     btn = 0;
     #15;
-    rst_n = 1;
+    rst = 0;
     #17;
     btn = #32 ~btn;
     btn = #20 ~btn;
