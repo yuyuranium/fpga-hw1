@@ -175,21 +175,21 @@ end
 
 /* modify light sec */
 always@(*)begin  
-  if(debouncer_BTN[1])begin // sec +1
+  if(BTN[1])begin // sec +1
     if(&changed_light)begin
       new_light = changed_light;
     end else begin
       new_light = changed_light + 4'd1;
     end
   end  
-  else if(debouncer_BTN[2])begin //sec -1
+  else if(BTN[2])begin //sec -1
     if(~|changed_light)begin
       new_light = changed_light;
     end else begin
       new_light = changed_light - 4'd1;
     end
   end  
-  else if(debouncer_BTN[0])begin //do reset
+  else if(BTN[0])begin //do reset
     case(changed_light)
       rg_length:new_light = 4'd5;
       yellow_length:new_light = 4'd1;
