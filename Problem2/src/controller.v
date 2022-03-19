@@ -1,5 +1,5 @@
-`include "divider.v"
-`include "debouncer.v"
+//`include "divider.v"
+//`include "debouncer.v"
 
 module Controller ( input clk,
                     input rst,
