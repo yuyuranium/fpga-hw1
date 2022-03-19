@@ -183,7 +183,7 @@ always@(*)begin
     end
   end  
   else if(debouncer_BTN[2])begin //sec -1
-    if(~|changed_light)begin
+    if(changed_light==4'd1)begin
       new_light = changed_light;
     end else begin
       new_light = changed_light - 4'd1;
